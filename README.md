@@ -10,6 +10,6 @@ The basic concept should be for 2 players to select cards at random and determin
 
 ## monday (work progress board)
 
-<iframe src="https://view.monday.com/embed/3315926823-513eb655451ccf0cf8fcf0c59899b83f?r=use1" width=770 height=500 style="border: 0; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
+![monday-board-image](https://view.monday.com/3315926823-513eb655451ccf0cf8fcf0c59899b83f?r=use1)
 
 [monday-board](https://view.monday.com/3315926823-513eb655451ccf0cf8fcf0c59899b83f?r=use1)
