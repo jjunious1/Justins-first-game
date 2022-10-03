@@ -1,0 +1,25 @@
+body {
+display: grid;
+background-color: black;
+}
+.game {
+color: white;
+left: 0;
+position: absolute;
+text-align: center;
+top: 35%;
+width: 100%;
+font-size: 400%;
+font-family: 'Permanent Marker', cursive;
+}
+a {
+color: white;
+left: 0;
+position: absolute;
+text-align: center;
+top: 60%;
+width: 100%;
+font-size: 150%;
+text-decoration: none;
+font-family: 'Permanent Marker', cursive;
+}
