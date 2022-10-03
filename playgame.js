@@ -1,9 +1,8 @@
 // Global Variables
-let player = document.querySelector('player button')
-let opponent = document.querySelector('opp button')
+let player = document.querySelector('.player button')
+let opponent = document.querySelector('.opponent button')
 
-//Event listeners
-
+// event listeners
 let click1 = player.addEventListener('click', () => {
   console.log('click worked')
 })
