@@ -1,6 +1,9 @@
 body {
 display: grid;
-background-color: black;
+background-image:url("https://i.ebayimg.com/images/g/VAEAAOSwLJ9Z5psJ/s-l400.jpg");
+background-size: cover;
+font-family: 'Permanent Marker', cursive;
+color: white;
 }
 .game {
 color: white;
@@ -10,6 +13,17 @@ text-align: center;
 top: 35%;
 width: 100%;
 font-size: 400%;
+font-family: 'Permanent Marker', cursive;
+}
+.home-text {
+  color: white;
+left: 0;
+position: absolute;
+text-align: center;
+top: 55%;
+font-size: 120%;
+width: 100%;
+text-decoration: none;
 font-family: 'Permanent Marker', cursive;
 }
 a {
@@ -22,4 +36,40 @@ width: 100%;
 font-size: 150%;
 text-decoration: none;
 font-family: 'Permanent Marker', cursive;
+}
+h1 {
+  text-align: center;
+  display: grid;
+}
+.winner {
+display: flex;
+justify-content: flex-end;
+}
+.score {
+display: flex;
+justify-content: flex-end;
+}
+.wins {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+.opp {
+display: inline;
+position: relative;
+top: 50px;
+width: 100px;
+}
+.player {
+display: inline;
+position: relative;
+margin-top: 300px;
+}
+p {
+  display: grid;
+  position: relative;
+  margin-top: 40px;
+}
+.line {
+  border-bottom: solid;
 }
