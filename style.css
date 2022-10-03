@@ -45,14 +45,22 @@ h1 {
   color: yellow; 
 }
 .winner {
+  display: flex;
+  justify-content: flex-end;
+  }
+.player-winner {
 display: flex;
 justify-content: flex-end;
 }
-.score {
+.player-wins {
+  display: flex;
+  justify-content: flex-end;
+  }
+.opponent-wins{
 display: flex;
 justify-content: flex-end;
 }
-.wins {
+.draws-wins {
   display: flex;
   list-style: none;
   justify-content: flex-end;
