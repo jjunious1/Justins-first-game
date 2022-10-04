@@ -55,22 +55,19 @@ let gameStart = gameButton.addEventListener(
   },
   { once: true } // found this on stackoverflow as a way to disable a button click event
 )
-gameButton.addEventListener('click', (switchturns) => {
-  gameButton.style.pointerEvents = ''
-  let player = 0
-})
-let changeTurn = gameButton.addEventListener('click', (switchturns) => {
-  gameButton.style.pointerEvents = ''
-  let player = 0
-})
-let gamePlay = playTurn.addEventListener('click', () => {
+
+let gamePlay = playTurn.addEventListener('click', (changeTurn) => {
   if (player === 1) {
     pCards[2].innerHTML = randomChoices()
     playerTotal()
+    player = changeTurn
   } else {
     opponentCards[1].innerHTML = randomChoices()
     opponentTotal()
   }
+})
+let changeTurn = turnEnd.addEventListener('click', () => {
+  let player = 0
 })
 
 //Variables for card PNG
