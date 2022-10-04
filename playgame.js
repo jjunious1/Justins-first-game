@@ -13,6 +13,12 @@ let randomChoices = () => {
   const choices = choice
   return choices
 }
+let playerTotal = (pCards) => {
+  let sum = 0
+  for (let i = 0; i < pCards.length; i++) {
+    console.log(pCards[i])
+  }
+}
 
 // let array = [a, b, c, d]
 // const a = 1
@@ -21,6 +27,7 @@ let randomChoices = () => {
 // const d = 4
 
 // event listeners
+//starts the game and hands out some of the cards
 let gameStart = gameButton.addEventListener('click', () => {
   pCards[0].innerHTML = randomChoices()
   pCards[1].innerHTML = randomChoices()
@@ -28,20 +35,16 @@ let gameStart = gameButton.addEventListener('click', () => {
   gameButton.innerHTML = 'Stay'
   playTurn.style.display = 'block'
   let player = 1
-  gameButton.removeEventListener('click', gameStart)
+  gameButton.removeEventListener('click', gameStart) // not working
 })
 
 let gamePlay = playTurn.addEventListener('click', () => {
-  let i = 0
-  if (player === 1 && pCards[i] === 0) {
-    for (i < pCards.length; i++; ) {
+  for (let i = 0; i < pCards.length; i++)
+    if (player === 1 && pCards[i] === 0) {
       pCards[i].innerHTML = randomChoices()
+    } else {
+      console.log('yay')
     }
-    if (gameButton === 'click') {
-    }
-  } else {
-    console.log('yay')
-  }
 })
 
 //Variables for card PNG
