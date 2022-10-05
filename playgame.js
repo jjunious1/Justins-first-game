@@ -7,6 +7,14 @@ let pCards = document.getElementsByClassName('p1')
 let opponentCards = document.getElementsByClassName('opp')
 let winner = document.getElementsByClassName('.winner')
 let player = 1
+let playerScore = 0
+let opponentScore = 0
+
+//Calet spade2 =
+// let spade3 =
+// let spade4 =
+// let spade
+// rd Variables
 
 // functions
 let randomChoices = () => {
@@ -14,34 +22,36 @@ let randomChoices = () => {
   const choices = choice
   return choices
 }
-let playerTotal = (playerScore) => {
+let playerTotal = () => {
   let sum = 0
   for (let i = 0; i < pCards.length; i++) {
     sum += parseInt(pCards[i].innerHTML)
+    playerScore = sum
   }
-  return sum
+  console.log(playerScore)
 }
 let opponentTotal = () => {
   let sum = 0
   for (let i = 0; i < opponentCards.length; i++) {
     sum += parseInt(opponentCards[i].innerHTML)
+    opponentScore = sum
   }
-  return sum
+  console.log(opponentScore)
 }
 let changeTurn = turnEnd.addEventListener('click', () => {
   if ((turnEnd = 'click')) {
-    let player = 0
-    console.log(player)
-  }
+player = 0
+console.log(player)
+    }
 })
 
-// let winningNumbers = () => {
-//   if (playerTotal < opponentTotal) {
-//     console.log('p wins')
-//   } else {
-//     console.log('o wins')
-//   }
-// // }
+let winningNumbers = () => {
+  if (playerScore > opponentScore) {
+    console.log('p wins')
+  } else {
+    console.log('o wins')
+  }
+}
 // // not working
 
 // event listeners
@@ -55,52 +65,46 @@ let gameStart = gameButton.addEventListener(
     gameButton.style.display = 'none'
     turnEnd.style.display = 'block'
     playTurn.style.display = 'block'
+    playerTotal()
+    opponentTotal()
   },
   { once: true }
   // found this on stackoverflow as a way to disable a button click event
 )
 // handles hits and stay logic
-let gamePlay = playTurn.addEventListener('click', (changeTurn) => {
-  //   pCards.forEach((cards) => {
-  //     pCards.innerHTML = randomChoices()
-  //   })
-  // })
+let gamePlay = playTurn.addEventListener('click', () => {
+if (player === 1 && pCards[2].innerHTML === '0') {
+  pCards[2].innerHTML = randomChoices()
+  changeTurn
+  playerTotal()
 
-  if (player === 1 && pCards[2].innerHTML === '0') {
-    pCards[2].innerHTML = randomChoices()
-  } else if (
-    player === 1 &&
-    pCards[2].innerHTML != '0' &&
-    pCards[3].innerHTML === '0'
-  ) {
-    pCards[3].innerHTML = randomChoices()
-  } else if (
-    player === 1 &&
-    pCards[3].innerHTML != '0' &&
-    pCards[4].innerHTML === '0'
-  ) {
-    pCards[4].innerHTML = randomChoices()
-  } else {
-    player = changeTurn
-  }
-  if (player === 0 && opponentCards[1].innerHTML === '0') {
-    opponentCards[1].innerHTML = randomChoices()
-  } else if (
-    player === 0 &&
-    opponentCards[1].innerHTML != '0' &&
-    opponentCards[2].innerHTML === '0'
-  ) {
-    opponentCards[2].innerHTML = randomChoices()
-  }
+} else if (player === 1 && pCards[2].innerHTML != '0' && pCards[3].innerHTML === '0') {
+  pCards[3].innerHTML = randomChoices()
+  changeTurn
+  playerTotal()
+
+} else if (player === 1 && pCards[3].innerHTML != '0' && pCards[4].innerHTML === '0') {
+  pCards[4].innerHTML = randomChoices()
+  changeTurn
+  playerTotal()
+
+} else if (player === 0 && opponentCards[1].innerHTML === '0'){
+  opponentCards[1].innerHTML = randomChoices()
+  opponentTotal()
+
+}else if (player === 0 && opponentCards[1].innerHTML != '0' && opponentCards[2].innerHTML === '0') {
+  opponentCards[2].innerHTML = randomChoices()
+  opponentTotal()
+
+} else if (player === 0 && opponentCards[2].innerHTML != '0' && opponentCards[3].innerHTML === '0'){
+  opponentCards[3].innerHTML = randomChoices()
+  opponentTotal()
+
+} else if (player === 0 && opponentCards[3].innerHTML != '0' && opponentCards[4].innerHTML === '0'){
+  opponentCards[4].innerHTML = randomChoices()
+  opponentTotal()
+} else {
+  console.log('nothing')
+}
 })
-
-//Variables for card PNG
-
-// Winning conditions
-// if () === 21) {
-//   winner.innerHTML = 'You WIN'
-// }
-
-//Functions
-
-//Game logic
+winningNumbers()
