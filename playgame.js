@@ -1,4 +1,5 @@
-// Global Variables
+// GLOBAL VARIABLES
+
 let gameButton = document.querySelector('.game button')
 let turnEnd = document.querySelector('.Stay')
 let playTurn = document.querySelector('.Hit')
@@ -6,16 +7,23 @@ let pCards = document.getElementsByClassName('p1')
 let gameChoices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let opponentCards = document.getElementsByClassName('opp')
 let winner = document.querySelector('.winner')
+let winsPlayer = document.querySelector('.player-wins')
+let winsOpponent = document.querySelector('.opponent-wins')
+let drawTotal = document.querySelector('.draws-wins')
 let player = 1
 let playerScore = 0
 let opponentScore = 0
+let count = 0
 
-// functions
+// FUNCTIONS
+
+//random card generator
 let randomChoices = () => {
   const choice = gameChoices[Math.floor(Math.random() * gameChoices.length)]
   const choices = choice
   return choices
 }
+//player and opponent Score calculator
 let playerTotal = () => {
   let sum = 0
   for (let i = 0; i < pCards.length; i++) {
@@ -32,27 +40,32 @@ let opponentTotal = () => {
   }
   return opponentScore
 }
-
+// winning conditions 
 let winningNumbers = () => {
   if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
     console.log('Player 1 wins')
     winner.textContent = 'Player 1 wins'
-    
+    count ++
+    winsPlayer.innerHTML = ('wins = ' + count)
   } else if (playerScore > 21 || opponentScore > 21){
     console.log('Opponent wins')
     winner.textContent = 'Bust'
   } else {
     console.log('Opponent wins')
     winner.textContent = 'Opponent wins'
+    count ++
+    winsOpponent.innerHTML = ('losses = ' + count)
   }
 }
 let draw = () => {
   if (playerScore > 21) {
 wins.textContent = 'Draw'
+count ++
+    draw.innerHTML = ('Draws = ' + count)
   }
 }
 
-// event listeners
+// EVENT LISTENERS
 let changeTurn = turnEnd.addEventListener('click', () => {
   if ((turnEnd = 'click')) {
 player = 0
