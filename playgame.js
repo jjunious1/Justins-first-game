@@ -1,9 +1,10 @@
 // GLOBAL VARIABLES
 
-let gameButton = document.querySelector('.game button')
+let gameButton = document.querySelector('.Start')
 let turnEnd = document.querySelector('.Stay')
 let playTurn = document.querySelector('.Hit')
-let pCards = document.getElementsByClassName('p1')
+let checker = document.querySelector('.Check')
+let pCards = document.querySelectorAll('.p1')
 let gameChoices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let opponentCards = document.getElementsByClassName('opp')
 let winner = document.querySelector('.winner')
@@ -14,6 +15,11 @@ let player = 1
 let playerScore = 0
 let opponentScore = 0
 let count = 0
+
+// let gameStuff = {
+//   '2': [1,2,3],
+//   '3': [4,5,6],
+// }
 
 // FUNCTIONS
 
@@ -40,7 +46,7 @@ let opponentTotal = () => {
   }
   return opponentScore
 }
-// winning conditions 
+// // winning conditions 
 let winningNumbers = () => {
   if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
     console.log('Player 1 wins')
@@ -65,14 +71,14 @@ count ++
   }
 }
 
-// EVENT LISTENERS
+// // EVENT LISTENERS
 let changeTurn = turnEnd.addEventListener('click', () => {
   if ((turnEnd = 'click')) {
 player = 0
 console.log(player)
     }
 })
-//starts the game and hands out some of the cards
+// //starts the game and hands out some of the cards
 let gameStart = gameButton.addEventListener(
   'click',
   () => {
@@ -82,13 +88,14 @@ let gameStart = gameButton.addEventListener(
     gameButton.style.display = 'none'
     turnEnd.style.display = 'block'
     playTurn.style.display = 'block'
+    checker.style.display = 'flex'
     playerTotal()
     opponentTotal()
   },
   { once: true }
   // found this on stackoverflow as a way to disable a button click event
 )
-// handles hits and stay logic
+// // handles hits and stay logic
 let gamePlay = playTurn.addEventListener('click', () => {
 if (player === 1 && pCards[2].innerHTML === '0') {
   pCards[2].innerHTML = randomChoices()
@@ -111,24 +118,25 @@ if (player === 1 && pCards[2].innerHTML === '0') {
 } else if (player === 0 && opponentCards[1].innerHTML === '0'){
   opponentCards[1].innerHTML = randomChoices()
   opponentTotal()
-  winningNumbers()
 
 }else if (player === 0 && opponentCards[1].innerHTML != '0' && opponentCards[2].innerHTML === '0') {
   opponentCards[2].innerHTML = randomChoices()
   opponentTotal()
-  winningNumbers()
   
 } else if (player === 0 && opponentCards[2].innerHTML != '0' && opponentCards[3].innerHTML === '0'){
   opponentCards[3].innerHTML = randomChoices()
   opponentTotal()
-  winningNumbers()
 
 } else if (player === 0 && opponentCards[3].innerHTML != '0' && opponentCards[4].innerHTML === '0'){
   opponentCards[4].innerHTML = randomChoices()
   opponentTotal()
-  winningNumbers()
+  
 } else {
   console.log('nothing')
 }
+})
+
+let gameDecision = checker.addEventListener('click', () => {
+  winningNumbers()
 })
 

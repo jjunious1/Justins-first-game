@@ -52,17 +52,19 @@ h1 {
 
 .Start,
 .Hit,
-.Stay {
+.Stay,
+.Check {
+  text-decoration: none;
   font-family: 'Permanent Marker', cursive;
   margin-left: auto;
   margin-right: auto;
   font-size: 25px;
-  text-decoration: none;
   justify-content: flex-end;
 }
 
 .Hit,
-.Stay {
+.Stay,
+.Check {
   display: none;
 }
 
@@ -117,4 +119,8 @@ h1 {
 
 .line2 {
   border-bottom: solid;
+}
+
+.spade {
+  background-image: url ('https://lh3.googleusercontent.com/VMeo9a1aCCd3OZzGfkUX_FSjnC0CLJ1szUL_GSWbkKhNfTusEzxyTh2rrgmkhdrhQY0DMEvRZZXiagCeek3rbMF_FkQ5wveqLZWMex8uN8TrFjCwQ9H-LIMW7Y85XUtLsTB3avkrTQ=w2400')
 }
