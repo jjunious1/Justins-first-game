@@ -17,6 +17,19 @@ let playerScore = 0
 let opponentScore = 0
 let count = 0
 
+let resetGame = resetButton.addEventListener('click', () => {
+  document.querySelectorAll('.opponent-board')[0].childNodes.forEach((cardDeck) => {
+    cardDeck.innerHTML = '0'
+})
+document.querySelectorAll('.player-board')[0].childNodes.forEach((element) => {
+  element.innerHTML = '0'
+})
+player = 1
+gameStart
+winner.innerHTML = ''
+resetButton.style.display = 'none'
+})
+
 // FUNCTIONs
 
 //random card generator
@@ -44,7 +57,7 @@ let opponentTotal = () => {
   }
   return opponentScore
 }
-// // winning conditions 
+//winning conditions 
 
 let winningNumbers = () => {
   if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
@@ -52,9 +65,6 @@ let winningNumbers = () => {
     winner.textContent = 'Player 1 wins'
     count ++
     winsPlayer.innerHTML = ('wins = ' + count)
-  } else if (playerScore > 21 || opponentScore > 21){
-    console.log('Opponent wins')
-    winner.textContent = 'Bust'
   } else {
     console.log('Opponent wins')
     winner.textContent = 'Opponent wins'
@@ -64,11 +74,17 @@ let winningNumbers = () => {
 }
 let draw = () => {
   if (playerScore > 21) {
-wins.textContent = 'Draw'
+winner.textContent = 'Draw'
 count ++
     draw.innerHTML = ('Draws = ' + count)
-  }
-}
+    playTurn.style.display = 'none'
+    resetGame.style.display = 'block'
+  } else if (playerScore > 21 || opponentScore > 21){
+    console.log('Opponent wins')
+    winner.textContent = 'Bust'
+    playTurn.style.display = 'none'
+    resetGame.style.display = 'block'
+}}
 
 // // EVENT LISTENERS
 
@@ -143,22 +159,9 @@ if (player === 1 && pCards[2].innerHTML === '0') {
 // checking winner and reseting game
 let gameDecision = checker.addEventListener('click', () => {
   winningNumbers()
-    document.querySelector('.Hit').style.display = 'none'
-    document.querySelector('.Stay').style.display = 'none'
-    document.querySelector('.Check').style.display = 'none'
+    playTurn.style.display = 'none'
+    checker.style.display = 'none'
     resetButton.style.display = 'block'
     resetGame
 })
-let resetGame = resetButton.addEventListener('click', () => {
-  document.querySelectorAll('.opponent-board')[0].childNodes.forEach((cardDeck) => {
-    cardDeck.innerHTML = '0'
-})
-document.querySelectorAll('.player-board')[0].childNodes.forEach((element) => {
-  element.innerHTML = '0'
-})
-player = 1
-    winner.innerHTML = ''
-    document.querySelector('.Hit').style.display = 'block'
-    document.querySelector('.Stay').style.display = 'block'
-    document.querySelector('.Check').style.display = 'block'
-})
+
