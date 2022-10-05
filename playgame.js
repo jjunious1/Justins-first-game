@@ -10,11 +10,8 @@ let player = 1
 let playerScore = 0
 let opponentScore = 0
 
-//Calet spade2 =
-// let spade3 =
-// let spade4 =
-// let spade
-// rd Variables
+// let card2 = ["https://photos.app.goo.gl/Yn8BV3cAo5Z5MJka6", "https://photos.app.goo.gl/TtWP6reSnwfAuF9h6" ,"https://photos.app.goo.gl/sfa1vRD8SkdqUUgn7" ]
+
 
 // functions
 let randomChoices = () => {
