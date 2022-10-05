@@ -2,16 +2,13 @@
 let gameButton = document.querySelector('.game button')
 let turnEnd = document.querySelector('.Stay')
 let playTurn = document.querySelector('.Hit')
-let gameChoices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let pCards = document.getElementsByClassName('p1')
+let gameChoices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let opponentCards = document.getElementsByClassName('opp')
-let winner = document.getElementsByClassName('.winner')
+let winner = document.querySelector('.winner')
 let player = 1
 let playerScore = 0
 let opponentScore = 0
-
-// let card2 = ["https://photos.app.goo.gl/Yn8BV3cAo5Z5MJka6", "https://photos.app.goo.gl/TtWP6reSnwfAuF9h6" ,"https://photos.app.goo.gl/sfa1vRD8SkdqUUgn7" ]
-
 
 // functions
 let randomChoices = () => {
@@ -25,7 +22,7 @@ let playerTotal = () => {
     sum += parseInt(pCards[i].innerHTML)
     playerScore = sum
   }
-  console.log(playerScore)
+  return playerScore
 }
 let opponentTotal = () => {
   let sum = 0
@@ -33,25 +30,35 @@ let opponentTotal = () => {
     sum += parseInt(opponentCards[i].innerHTML)
     opponentScore = sum
   }
-  console.log(opponentScore)
+  return opponentScore
 }
+
+let winningNumbers = () => {
+  if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
+    console.log('Player 1 wins')
+    winner.textContent = 'Player 1 wins'
+    
+  } else if (playerScore > 21 || opponentScore > 21){
+    console.log('Opponent wins')
+    winner.textContent = 'Bust'
+  } else {
+    console.log('Opponent wins')
+    winner.textContent = 'Opponent wins'
+  }
+}
+let draw = () => {
+  if (playerScore > 21) {
+wins.textContent = 'Draw'
+  }
+}
+
+// event listeners
 let changeTurn = turnEnd.addEventListener('click', () => {
   if ((turnEnd = 'click')) {
 player = 0
 console.log(player)
     }
 })
-
-let winningNumbers = () => {
-  if (playerScore > opponentScore) {
-    console.log('p wins')
-  } else {
-    console.log('o wins')
-  }
-}
-// // not working
-
-// event listeners
 //starts the game and hands out some of the cards
 let gameStart = gameButton.addEventListener(
   'click',
@@ -74,34 +81,41 @@ if (player === 1 && pCards[2].innerHTML === '0') {
   pCards[2].innerHTML = randomChoices()
   changeTurn
   playerTotal()
+  draw()
 
 } else if (player === 1 && pCards[2].innerHTML != '0' && pCards[3].innerHTML === '0') {
   pCards[3].innerHTML = randomChoices()
   changeTurn
   playerTotal()
+  draw()
 
 } else if (player === 1 && pCards[3].innerHTML != '0' && pCards[4].innerHTML === '0') {
   pCards[4].innerHTML = randomChoices()
   changeTurn
   playerTotal()
+  draw()
 
 } else if (player === 0 && opponentCards[1].innerHTML === '0'){
   opponentCards[1].innerHTML = randomChoices()
   opponentTotal()
+  winningNumbers()
 
 }else if (player === 0 && opponentCards[1].innerHTML != '0' && opponentCards[2].innerHTML === '0') {
   opponentCards[2].innerHTML = randomChoices()
   opponentTotal()
-
+  winningNumbers()
+  
 } else if (player === 0 && opponentCards[2].innerHTML != '0' && opponentCards[3].innerHTML === '0'){
   opponentCards[3].innerHTML = randomChoices()
   opponentTotal()
+  winningNumbers()
 
 } else if (player === 0 && opponentCards[3].innerHTML != '0' && opponentCards[4].innerHTML === '0'){
   opponentCards[4].innerHTML = randomChoices()
   opponentTotal()
+  winningNumbers()
 } else {
   console.log('nothing')
 }
 })
-winningNumbers()
+
