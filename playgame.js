@@ -102,9 +102,14 @@ let gameStart = gameButton.addEventListener(
   'click',
   () => {
     pCards[0].innerHTML = randomChoices()
-    // pCards[0].classList.add('spade')
+    pCards[0].classList.add('layer')
+    pCards[0].style.color = 'black'
     pCards[1].innerHTML = randomChoices()
+    pCards[1].classList.add('layer')
+    pCards[1].style.color = 'black'
     opponentCards[0].innerHTML = randomChoices()
+    opponentCards[0].classList.add('layer')
+    opponentCards[0].style.color = 'black'
     gameButton.style.display = 'none'
     turnEnd.style.display = 'block'
     playTurn.style.display = 'block'
@@ -120,36 +125,50 @@ let gameStart = gameButton.addEventListener(
 let gamePlay = playTurn.addEventListener('click', () => {
 if (player === 1 && pCards[2].innerHTML === '0') {
   pCards[2].innerHTML = randomChoices()
+  pCards[2].classList.add('layer')
+  pCards[2].style.color = 'black'
   changeTurn
   playerTotal()
   draw()
 
 } else if (player === 1 && pCards[2].innerHTML != '0' && pCards[3].innerHTML === '0') {
   pCards[3].innerHTML = randomChoices()
+  pCards[3].classList.add('layer')
+  pCards[3].style.color = 'black'
   changeTurn
   playerTotal()
   draw()
 
 } else if (player === 1 && pCards[3].innerHTML != '0' && pCards[4].innerHTML === '0') {
   pCards[4].innerHTML = randomChoices()
+  pCards[4].classList.add('layer')
+  pCards[4].style.color = 'black'
   changeTurn
   playerTotal()
   draw()
 
 } else if (player === 0 && opponentCards[1].innerHTML === '0'){
   opponentCards[1].innerHTML = randomChoices()
+  opponentCards[1].classList.add('layer')
+  opponentCards[1].style.color = 'black'
   opponentTotal()
 
 }else if (player === 0 && opponentCards[1].innerHTML != '0' && opponentCards[2].innerHTML === '0') {
   opponentCards[2].innerHTML = randomChoices()
+  opponentCards[2].classList.add('layer')
+  opponentCards[2].style.color = 'black'
   opponentTotal()
   
 } else if (player === 0 && opponentCards[2].innerHTML != '0' && opponentCards[3].innerHTML === '0'){
   opponentCards[3].innerHTML = randomChoices()
+  opponentCards[3].classList.add('layer')
+  opponentCards[3].style.color = 'black'
   opponentTotal()
 
 } else if (player === 0 && opponentCards[3].innerHTML != '0' && opponentCards[4].innerHTML === '0'){
   opponentCards[4].innerHTML = randomChoices()
+  opponentCards[4].classList.add('layer')
+  opponentCards[4].style.color = 'black'
   opponentTotal()
   
 } else {
