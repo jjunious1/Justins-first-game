@@ -46,6 +46,12 @@ h1 {
   display: grid;
 }
 
+h2 {
+  text-align: center;
+  display: grid;
+  font-size: 300%;
+}
+
 .home-text {
   color: yellow;
 }
@@ -61,6 +67,8 @@ h1 {
   margin-right: auto;
   font-size: 25px;
   justify-content: flex-end;
+  border-radius: 10px;
+  border: 2px solid;
 }
 
 .Hit,
@@ -102,7 +110,8 @@ h1 {
 .opp {
   display: inline;
   position: relative;
-  font-size: 100px;
+  text-align: center;
+  font-size: 80px;
   padding: 30px;
   color: rgba(0, 0, 0, 0);
   font-family: times;
@@ -111,8 +120,9 @@ h1 {
 .p1 {
   display: inline;
   position: relative;
+  text-align: center;
   margin-top: 60px;
-  font-size: 100px;
+  font-size: 80px;
   padding: 30px;
   color: rgba(0, 0, 0, 0);
   font-family: times;

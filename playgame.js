@@ -1,12 +1,17 @@
 // GLOBAL VARIABLES
 
+//button variables
 let gameButton = document.querySelector('.Start')
 let turnEnd = document.querySelector('.Stay')
 let playTurn = document.querySelector('.Hit')
 let checker = document.querySelector('.Check')
 let resetButton = document.querySelector('.Reset')
+
+//board variables
+let board1 = document.querySelectorAll('.player-board')
+let board2 = document.querySelectorAll('.opponent-board')
 let pCards = document.querySelectorAll('.p1')
-let gameChoices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let gameChoices = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 let opponentCards = document.getElementsByClassName('opp')
 let winner = document.querySelector('.winner')
 let winsPlayer = document.querySelector('.player-wins')
@@ -18,22 +23,26 @@ let opponentScore = 0
 let count = 0
 
 let resetGame = resetButton.addEventListener('click', () => {
-  document.querySelectorAll('.opponent-board')[0].childNodes.forEach((cardDeck) => {
-    cardDeck.innerHTML = '0'
+  board1[0].childNodes.forEach((cardDeck1) => {
+    cardDeck1.innerHTML = '0'
 })
-document.querySelectorAll('.player-board')[0].childNodes.forEach((element) => {
-  element.innerHTML = '0'
+  board2[0].childNodes.forEach((cardDeck2) => {
+    cardDeck2.innerHTML = '0'
+    // cardDeck2.style.color = 'rgba(0, 0, 0, 0)'
+    // cardDeck2.nextSibling.classList.remove('layer')
 })
-player = 1
-gameStart
-winner.innerHTML = ''
-resetButton.style.display = 'none'
+  player = 1
+  winner.innerHTML = ''
+  resetButton.style.display = 'none'
+  gameButton.style.display = 'block'
+  playTurn.style.display = 'block'
+
 })
 
 // FUNCTIONs
 
 //random card generator
-let randomChoices = () => {
+const randomChoices = () => {
   const choice = gameChoices[Math.floor(Math.random() * gameChoices.length)]
   const choices = choice
   return choices
@@ -41,7 +50,7 @@ let randomChoices = () => {
 
 //player and opponent Score calculator
 
-let playerTotal = () => {
+const playerTotal = () => {
   let sum = 0
   for (let i = 0; i < pCards.length; i++) {
     sum += parseInt(pCards[i].innerHTML)
@@ -49,7 +58,7 @@ let playerTotal = () => {
   }
   return playerScore
 }
-let opponentTotal = () => {
+const opponentTotal = () => {
   let sum = 0
   for (let i = 0; i < opponentCards.length; i++) {
     sum += parseInt(opponentCards[i].innerHTML)
@@ -59,7 +68,7 @@ let opponentTotal = () => {
 }
 //winning conditions 
 
-let winningNumbers = () => {
+const winningNumbers = () => {
   if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
     console.log('Player 1 wins')
     winner.textContent = 'Player 1 wins'
@@ -72,18 +81,13 @@ let winningNumbers = () => {
     winsOpponent.innerHTML = ('losses = ' + count)
   }
 }
-let draw = () => {
-  if (playerScore > 21) {
-winner.textContent = 'Draw'
-count ++
-    draw.innerHTML = ('Draws = ' + count)
+const bust = () => {
+  if (playerScore > 21 || opponentScore > 21) {
+    winner.textContent = 'BUST'
     playTurn.style.display = 'none'
-    resetGame.style.display = 'block'
-  } else if (playerScore > 21 || opponentScore > 21){
-    console.log('Opponent wins')
-    winner.textContent = 'Bust'
-    playTurn.style.display = 'none'
-    resetGame.style.display = 'block'
+    checker.style.display = 'none'
+    turnEnd.style.display = 'none'
+    resetButton.style.display = 'block'
 }}
 
 // // EVENT LISTENERS
@@ -92,13 +96,13 @@ count ++
 
 let changeTurn = turnEnd.addEventListener('click', () => {
   if ((turnEnd = 'click')) {
-player = 0
-console.log(player)
+    player = 0
+    console.log(player)
     }
 })
 // //starts the game and hands out some of the starting cards
 
-let gameStart = gameButton.addEventListener(
+let gameStart = ()=> {gameButton.addEventListener(
   'click',
   () => {
     pCards[0].innerHTML = randomChoices()
@@ -116,10 +120,9 @@ let gameStart = gameButton.addEventListener(
     checker.style.display = 'block'
     playerTotal()
     opponentTotal()
-  },
-  { once: true }
-  // found this on stackoverflow as a way to disable a button click event
-)
+  }
+)}
+
 // // handles hits and stay logic
 
 let gamePlay = playTurn.addEventListener('click', () => {
@@ -129,7 +132,7 @@ if (player === 1 && pCards[2].innerHTML === '0') {
   pCards[2].style.color = 'black'
   changeTurn
   playerTotal()
-  draw()
+  bust()
 
 } else if (player === 1 && pCards[2].innerHTML != '0' && pCards[3].innerHTML === '0') {
   pCards[3].innerHTML = randomChoices()
@@ -137,7 +140,7 @@ if (player === 1 && pCards[2].innerHTML === '0') {
   pCards[3].style.color = 'black'
   changeTurn
   playerTotal()
-  draw()
+  bust()
 
 } else if (player === 1 && pCards[3].innerHTML != '0' && pCards[4].innerHTML === '0') {
   pCards[4].innerHTML = randomChoices()
@@ -145,42 +148,47 @@ if (player === 1 && pCards[2].innerHTML === '0') {
   pCards[4].style.color = 'black'
   changeTurn
   playerTotal()
-  draw()
+  bust()
 
 } else if (player === 0 && opponentCards[1].innerHTML === '0'){
   opponentCards[1].innerHTML = randomChoices()
   opponentCards[1].classList.add('layer')
   opponentCards[1].style.color = 'black'
   opponentTotal()
+  bust()
 
 }else if (player === 0 && opponentCards[1].innerHTML != '0' && opponentCards[2].innerHTML === '0') {
   opponentCards[2].innerHTML = randomChoices()
   opponentCards[2].classList.add('layer')
   opponentCards[2].style.color = 'black'
   opponentTotal()
+  bust()
   
 } else if (player === 0 && opponentCards[2].innerHTML != '0' && opponentCards[3].innerHTML === '0'){
   opponentCards[3].innerHTML = randomChoices()
   opponentCards[3].classList.add('layer')
   opponentCards[3].style.color = 'black'
   opponentTotal()
+  bust()
 
 } else if (player === 0 && opponentCards[3].innerHTML != '0' && opponentCards[4].innerHTML === '0'){
   opponentCards[4].innerHTML = randomChoices()
   opponentCards[4].classList.add('layer')
   opponentCards[4].style.color = 'black'
   opponentTotal()
-  
+  bust()
+
 } else {
   console.log('nothing')
 }
 })
 // checking winner and reseting game
 let gameDecision = checker.addEventListener('click', () => {
-  winningNumbers()
+    winningNumbers()
     playTurn.style.display = 'none'
     checker.style.display = 'none'
     resetButton.style.display = 'block'
+    turnEnd.style.display = 'none'
     resetGame
 })
-
+gameStart()

@@ -6,9 +6,11 @@ My first game is going to be a game of Blackjack!!
 
 ![BlackJack-Table](https://roarblogs.s3.amazonaws.com/mgm/sports/en/blog/wp-content/uploads/2022/01/21111006/Birds-eye-view-of-a-blackjack-table-.jpg 'Text to show on mouseover')
 
-The basic concept should be for 2 players to select cards at random and determine a winner based on set winning of conditions. I am also considering adding in a dealer that is the computer that you can play. The computer will have random choices and winner will be determined based on a set of winning conditions
+The basic concept should be for 2 players to select cards at random and determine a winner based on set winning of conditions. You can see the winners displayed at the end of the game and continue playing 
 
 ### How to get Started!
+- Fork and clone this repo.
+- `cd` into the folder and run `code .`
 
 ## monday (work progress board)
 
