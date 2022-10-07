@@ -26,7 +26,6 @@ let losses = 0
 let resetGame = resetButton.addEventListener('click', () => {
   board1[0].childNodes.forEach((cardDeck1) => {
     cardDeck1.innerHTML = '0'
-    cardDeck1.st
 })
   board2[0].childNodes.forEach((cardDeck2) => {
     cardDeck2.innerHTML = '0'
