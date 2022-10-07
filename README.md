@@ -37,7 +37,6 @@ The basic objective of the game is to get the highest total of cards close to 21
 - Improved game logic and cleaning up code
 - Ability to play against AI opponent
 - Cards to display 
--
 
 ## monday (work progress board)
 
