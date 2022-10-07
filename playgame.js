@@ -28,8 +28,6 @@ let resetGame = resetButton.addEventListener('click', () => {
 })
   board2[0].childNodes.forEach((cardDeck2) => {
     cardDeck2.innerHTML = '0'
-    // cardDeck2.style.color = 'rgba(0, 0, 0, 0)'
-    // cardDeck2.nextSibling.classList.remove('layer')
 })
   player = 1
   winner.innerHTML = ''
@@ -37,7 +35,8 @@ let resetGame = resetButton.addEventListener('click', () => {
   playTurn.style.display = 'block'
   checker.style.display = 'block'
   resetButton.style.display = 'none'
-
+  playerScore = 0
+  opponentScore = 0
 })
 
 // FUNCTIONs
@@ -92,7 +91,6 @@ const bust = () => {
 }}
 
 // // EVENT LISTENERS
-
 // changes the turn to the opponent
 
 let changeTurn = turnEnd.addEventListener('click', () => {
@@ -103,9 +101,7 @@ let changeTurn = turnEnd.addEventListener('click', () => {
 })
 // //starts the game and hands out some of the starting cards
 
-let gameStart = ()=> {gameButton.addEventListener(
-  'click',
-  () => {
+let gameStart = ()=> {gameButton.addEventListener('click',() => {
     pCards[0].innerHTML = randomChoices()
     pCards[0].classList.add('layer')
     pCards[0].style.color = 'black'
@@ -115,10 +111,10 @@ let gameStart = ()=> {gameButton.addEventListener(
     opponentCards[0].innerHTML = randomChoices()
     opponentCards[0].classList.add('layer')
     opponentCards[0].style.color = 'black'
+    gameButton.style.display = 'none'
     turnEnd.style.display = 'block'
     playTurn.style.display = 'block'
     checker.style.display = 'block'
-    gameButton.style.display = 'none'
     playerTotal()
     opponentTotal()
   }
@@ -127,68 +123,68 @@ let gameStart = ()=> {gameButton.addEventListener(
 // // handles hits and stay logic
 
 let gamePlay = playTurn.addEventListener('click', () => {
-if (player === 1 && pCards[2].innerHTML === '0') {
-  pCards[2].innerHTML = randomChoices()
-  pCards[2].classList.add('layer')
-  pCards[2].style.color = 'black'
-  changeTurn
-  playerTotal()
-  bust()
+  if (player === 1 && pCards[2].innerHTML === '0') {
+    pCards[2].innerHTML = randomChoices()
+    pCards[2].classList.add('layer')
+    pCards[2].style.color = 'black'
+    changeTurn
+    playerTotal()
+    bust()
 
 } else if (player === 1 && pCards[2].innerHTML != '0' && pCards[3].innerHTML === '0') {
-  pCards[3].innerHTML = randomChoices()
-  pCards[3].classList.add('layer')
-  pCards[3].style.color = 'black'
-  changeTurn
-  playerTotal()
-  bust()
+    pCards[3].innerHTML = randomChoices()
+    pCards[3].classList.add('layer')
+    pCards[3].style.color = 'black'
+    changeTurn
+    playerTotal()
+    bust()
 
 } else if (player === 1 && pCards[3].innerHTML != '0' && pCards[4].innerHTML === '0') {
-  pCards[4].innerHTML = randomChoices()
-  pCards[4].classList.add('layer')
-  pCards[4].style.color = 'black'
-  changeTurn
-  playerTotal()
-  bust()
+    pCards[4].innerHTML = randomChoices()
+    pCards[4].classList.add('layer')
+    pCards[4].style.color = 'black'
+    changeTurn
+    playerTotal()
+    bust()
 
 } else if (player === 0 && opponentCards[1].innerHTML === '0'){
-  opponentCards[1].innerHTML = randomChoices()
-  opponentCards[1].classList.add('layer')
-  opponentCards[1].style.color = 'black'
-  opponentTotal()
-  bust()
+    opponentCards[1].innerHTML = randomChoices()
+    opponentCards[1].classList.add('layer')
+    opponentCards[1].style.color = 'black'
+    opponentTotal()
+    bust()
 
 }else if (player === 0 && opponentCards[1].innerHTML != '0' && opponentCards[2].innerHTML === '0') {
-  opponentCards[2].innerHTML = randomChoices()
-  opponentCards[2].classList.add('layer')
-  opponentCards[2].style.color = 'black'
-  opponentTotal()
-  bust()
+    opponentCards[2].innerHTML = randomChoices()
+    opponentCards[2].classList.add('layer')
+    opponentCards[2].style.color = 'black'
+    opponentTotal()
+    bust()
   
 } else if (player === 0 && opponentCards[2].innerHTML != '0' && opponentCards[3].innerHTML === '0'){
-  opponentCards[3].innerHTML = randomChoices()
-  opponentCards[3].classList.add('layer')
-  opponentCards[3].style.color = 'black'
-  opponentTotal()
-  bust()
+    opponentCards[3].innerHTML = randomChoices()
+    opponentCards[3].classList.add('layer')
+    opponentCards[3].style.color = 'black'
+    opponentTotal()
+    bust()
 
 } else if (player === 0 && opponentCards[3].innerHTML != '0' && opponentCards[4].innerHTML === '0'){
-  opponentCards[4].innerHTML = randomChoices()
-  opponentCards[4].classList.add('layer')
-  opponentCards[4].style.color = 'black'
-  opponentTotal()
-  bust()
+    opponentCards[4].innerHTML = randomChoices()
+    opponentCards[4].classList.add('layer')
+    opponentCards[4].style.color = 'black'
+    opponentTotal()
+    bust()
 
 } else {
-  console.log('nothing')
+    console.log('nothing')
 }
 })
 // checking winner and reseting game
 let gameDecision = checker.addEventListener('click', () => {
     winningNumbers()
+    resetButton.style.display = 'block'
     playTurn.style.display = 'none'
     checker.style.display = 'none'
-    resetButton.style.display = 'block'
     turnEnd.style.display = 'none'
     resetGame
 })
