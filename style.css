@@ -100,13 +100,6 @@ h2 {
   font-size: 25px;
 }
 
-.draws-wins {
-  display: flex;
-  list-style: none;
-  justify-content: flex-end;
-  font-size: 25px;
-}
-
 .opp {
   display: inline;
   position: relative;

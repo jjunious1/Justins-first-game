@@ -20,11 +20,13 @@ let drawTotal = document.querySelector('.draws-wins')
 let player = 1
 let playerScore = 0
 let opponentScore = 0
-let count = 0
+let wins = 0
+let losses = 0
 
 let resetGame = resetButton.addEventListener('click', () => {
   board1[0].childNodes.forEach((cardDeck1) => {
     cardDeck1.innerHTML = '0'
+    cardDeck1.st
 })
   board2[0].childNodes.forEach((cardDeck2) => {
     cardDeck2.innerHTML = '0'
@@ -72,13 +74,13 @@ const winningNumbers = () => {
   if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
     console.log('Player 1 wins')
     winner.textContent = 'Player 1 wins'
-    count ++
-    winsPlayer.innerHTML = ('wins = ' + count)
+    wins += 1
+    winsPlayer.innerHTML = ('wins = ' + wins)
   } else {
     console.log('Opponent wins')
     winner.textContent = 'Opponent wins'
-    count ++
-    winsOpponent.innerHTML = ('losses = ' + count)
+    losses += 1
+    winsOpponent.innerHTML = ('losses = ' + losses)
   }
 }
 const bust = () => {
