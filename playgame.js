@@ -70,7 +70,7 @@ const opponentTotal = () => {
 //winning conditions 
 
 const winningNumbers = () => {
-  if (playerScore > opponentScore && playerScore <= 21 && opponentScore <= 21) {
+  if (playerScore > opponentScore && playerScore <= 21) {
     console.log('Player 1 wins')
     winner.textContent = 'Player 1 wins'
     wins += 1
@@ -186,7 +186,6 @@ let gameDecision = checker.addEventListener('click', () => {
     resetButton.style.display = 'block'
     playTurn.style.display = 'none'
     checker.style.display = 'none'
-    turnEnd.style.display = 'none'
     resetGame
 })
 gameStart()
