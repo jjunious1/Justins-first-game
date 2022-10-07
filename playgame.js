@@ -33,9 +33,10 @@ let resetGame = resetButton.addEventListener('click', () => {
 })
   player = 1
   winner.innerHTML = ''
-  resetButton.style.display = 'none'
   gameButton.style.display = 'block'
   playTurn.style.display = 'block'
+  checker.style.display = 'block'
+  resetButton.style.display = 'none'
 
 })
 
@@ -84,10 +85,10 @@ const winningNumbers = () => {
 const bust = () => {
   if (playerScore > 21 || opponentScore > 21) {
     winner.textContent = 'BUST'
+    resetButton.style.display = 'block'
     playTurn.style.display = 'none'
     checker.style.display = 'none'
     turnEnd.style.display = 'none'
-    resetButton.style.display = 'block'
 }}
 
 // // EVENT LISTENERS
@@ -114,10 +115,10 @@ let gameStart = ()=> {gameButton.addEventListener(
     opponentCards[0].innerHTML = randomChoices()
     opponentCards[0].classList.add('layer')
     opponentCards[0].style.color = 'black'
-    gameButton.style.display = 'none'
     turnEnd.style.display = 'block'
     playTurn.style.display = 'block'
     checker.style.display = 'block'
+    gameButton.style.display = 'none'
     playerTotal()
     opponentTotal()
   }

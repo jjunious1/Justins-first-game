@@ -19,7 +19,7 @@ The basic concept should be for 2 players to select cards at random and determin
 - If you would like to recreate this from scracth you would need to create a couple of files using `touch`. 
 - Create two html files, one named index.html, the other you can choose, one css file and one javascript file.  
 - From here you want to create your boiler plates for both html pages and [link your CSS and Javascript](https://betterprogramming.pub/link-css-and-js-files-with-html-file-f848d00b42e8#:~:text=To%20link%20a%20CSS%20file,file%20inside%20the%20head%20tag.&text=To%20link%20a%20Js%20file,%3B%20it%20doesn't%20matter.) files in the header. 
--After linking your files you can build out your "landing page" html that will direct you to your game html file. 
+- After linking your files you can build out your "landing page" html that will direct you to your game html file. 
 - Next you want to use some basic styling within css on the game and index.html files to have a foundation to build your game. 
 -Use the javascript file to build your variables, function and game logic
 
